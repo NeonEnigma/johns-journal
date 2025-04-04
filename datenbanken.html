@@ -1,0 +1,234 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Datenbanken und Normalisierung</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Johns Journal</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="passwords.html">Zugangsdaten</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+                            <h1>Datenbanken und Normalisierung – Fundament moderner Anwendungen</h1>
+							<span class="image main"><img src="images/datenbanken.jpg" alt="" /></span>
+                            <p>
+                                Datenbanken bilden die Grundlage für nahezu alle Bereiche der IT – von sozialen Netzwerken über 
+                                E-Commerce-Plattformen bis hin zu Unternehmensanwendungen. Sie nehmen eine Schlüsselrolle ein, 
+                                wenn es darum geht, Informationen sicher zu speichern, schnell abzufragen und langfristig 
+                                zu verwalten. Im klassischen Sinn spricht man häufig von „relationalen Datenbanken“, die 
+                                sich durch das Arbeiten mit Tabellen, Zeilen und Spalten auszeichnen. Ein wichtiges Konzept 
+                                in dieser Welt ist die <strong>Normalisierung</strong>: Sie soll sicherstellen, dass Daten 
+                                redundantärmer und konsistenter gespeichert werden. Doch auch abseits der relationalen Modelle 
+                                haben sich weitere Datenbankkonzepte etabliert – jedes mit eigenen Vor- und Nachteilen.
+                            </p>
+                        
+                            <h2>1. Das relationale Datenmodell</h2>
+                            <p>
+                                Relationale Datenbanken beruhen auf der Idee, dass Daten in zweidimensionalen Tabellen gespeichert 
+                                werden, die zueinander in Beziehung (<em>Relation</em>) stehen. Jede Tabelle weist bestimmte 
+                                Spalten (Attribute) und Zeilen (Tupel) auf. Diese Struktur lässt sich einfach abfragen 
+                                und bearbeiten, meist mithilfe der Abfragesprache <strong>SQL</strong> (Structured Query Language).
+                            </p>
+                            <p>
+                                Typische Vertreter sind Datenbankmanagementsysteme (DBMS) wie <strong>MySQL</strong>, 
+                                <strong>PostgreSQL</strong>, <strong>Oracle Database</strong> oder <strong>Microsoft SQL Server</strong>. 
+                                Eines ihrer großen Stärken liegt in der Fähigkeit, <em>Transaktionen</em> durchzuführen, 
+                                die den sogenannten <strong>ACID</strong>-Eigenschaften folgen (Atomicity, Consistency, 
+                                Isolation, Durability). Damit wird sichergestellt, dass Datenoperationen entweder ganz 
+                                oder gar nicht ausgeführt werden, was die Integrität der Daten wahrt.
+                            </p>
+                        
+                            <h2>2. Warum Normalisierung?</h2>
+                            <p>
+                                <strong>Normalisierung</strong> bezeichnet das schrittweise Zerlegen von Tabellen, sodass 
+                                Redundanzen minimiert werden und Inkonsistenzen erst gar nicht entstehen können. 
+                                Ein klassisches Beispiel: Wer in einer Tabelle <code>Bestellungen</code> neben 
+                                <em>Bestellnummer</em>, <em>Kundennummer</em> und <em>Datum</em> auch noch Felder wie 
+                                <em>Kundenname</em> oder <em>Kundenadresse</em> abspeichert, speichert dieselben 
+                                Infos mehrfach, wenn derselbe Kunde häufiger bestellt.
+                            </p>
+                            <p>
+                                Solche Redundanz kann <strong>Inkonsistenzen</strong> erzeugen: Ändert sich die Adresse eines 
+                                Kunden, muss sie an allen betroffenen Stellen aktualisiert werden. Wer das vergisst, pflegt 
+                                unterschiedliche Versionen derselben Information im System. 
+                                Genau hier setzt die Normalisierung an, indem sie Daten in logisch getrennte Tabellen 
+                                auslagert und nur noch über Schlüssel (z. B. Fremdschlüssel) miteinander verknüpft. 
+                            </p>
+                        
+                            <h2>3. Normalformen im Detail</h2>
+                            <p>
+                                Die Normalisierung wird in mehreren sogenannten <em>Normalformen</em> beschrieben, 
+                                von denen die ersten drei (1NF, 2NF, 3NF) in vielen Fällen bereits ausreichen, 
+                                um eine gut strukturierte Datenbank zu gewährleisten. Daneben gibt es erweiterte 
+                                Formen wie <em>BCNF</em> (Boyce-Codd Normalform) oder 4NF und 5NF, die eher 
+                                in Spezialfällen relevant sind.
+                            </p>
+                            <ul>
+                                <li>
+                                    <strong>1. Normalform (1NF)</strong><br>
+                                    Eine Tabelle ist in der 1NF, wenn alle Attribute nur „atomare“ Werte besitzen, 
+                                    sprich keine mehrfachen oder verschachtelten Werte in einer Spalte. 
+                                    Eine Spalte <code>Telefon</code>, in der mehrere Nummern durch Kommata getrennt 
+                                    stehen, würde gegen die 1NF verstoßen. Stattdessen sollte man lieber eine 
+                                    eigene Tabelle <code>Telefonnummern</code> einführen.
+                                </li>
+                                <li>
+                                    <strong>2. Normalform (2NF)</strong><br>
+                                    Sie erweitert die 1NF und besagt, dass <em>jedes Nicht-Schlüsselattribut</em> 
+                                    von <em>jedem Teil</em> eines Primärschlüssels voll abhängig sein muss. 
+                                    Das betrifft besonders Tabellen mit zusammengesetzten Schlüsseln. 
+                                    Wenn ein Attribut nur von einem Teil des Schlüssels abhängt, ist das 
+                                    ein Verstoß gegen die 2NF.
+                                </li>
+                                <li>
+                                    <strong>3. Normalform (3NF)</strong><br>
+                                    Ein weiterer Schritt, der sicherstellt, dass Nicht-Schlüsselattribute 
+                                    <em>nur von Schlüsseln</em> abhängen und nicht voneinander. 
+                                    Es darf keine <em>transitive Abhängigkeit</em> geben, bei der 
+                                    Attribut A von Attribut B und B wiederum vom Primärschlüssel abhängt.
+                                </li>
+                            </ul>
+                            <p>
+                                Diese drei Normalformen reichen in der Praxis oft aus, um eine Datenbank hinreichend 
+                                stabil und konsistent zu gestalten. Wird extrem streng normalisiert, kann es 
+                                jedoch zu einer größeren Anzahl an Tabellen kommen, was Abfragen komplexer macht 
+                                und Performance kosten kann. Daher wird meist ein Kompromiss zwischen 
+                                Datenintegrität und Abfragegeschwindigkeit angestrebt.
+                            </p>
+                        
+                            <h2>4. Indizes und Performance-Optimierung</h2>
+                            <p>
+                                Eine weitere wichtige Rolle bei der Performance spielt die <strong>Indexierung</strong>. 
+                                Indizes sind vergleichbar mit dem Stichwortverzeichnis in einem Buch: Anstatt 
+                                für eine Suche die gesamte Tabelle (das gesamte Buch) zu durchsuchen, blickt 
+                                das System schnell in den Index, um die gesuchten Zeilen (Seitenzahlen) zu 
+                                lokalisieren. Richtig eingesetzte Indizes können Abfragen, insbesondere bei 
+                                großen Datenmengen, enorm beschleunigen.
+                            </p>
+                            <p>
+                                Allerdings verbrauchen Indizes zusätzlichen Speicher und verlangsamen 
+                                <em>Schreibvorgänge</em>, da beim Einfügen oder Ändern von Daten auch der Index 
+                                aktualisiert werden muss. Die Kunst besteht darin, genau die Spalten zu indizieren, 
+                                die häufig als Filter- oder Join-Kriterien dienen, ohne dabei das System 
+                                mit zu vielen Indizes zu überfrachten.
+                            </p>
+                        
+                            <h2>5. Transaktionen und Sperrkonzepte</h2>
+                            <p>
+                                Relationale DBMS bieten <strong>Transaktionen</strong>, um mehrere Schritte in 
+                                einem <em>Atomaren</em> Kontext auszuführen. Verläuft eine Transaktion fehlerfrei, 
+                                wird sie durch <code>COMMIT</code> bestätigt; tritt ein Fehler auf, springt 
+                                das System mit <code>ROLLBACK</code> auf den Zustand vor Beginn der Transaktion zurück.
+                                Die dahinterliegenden <strong>Sperrmechanismen</strong> (Locks) stellen sicher, dass 
+                                konkurrierende Zugriffe nicht zu Datenkorruption führen.
+                            </p>
+                            <p>
+                                Um dabei Engpässe zu vermeiden und eine hohe <strong>Parallelität</strong> zu erlauben, 
+                                nutzen DBMS verschiedene <em>Isolation Levels</em> (z. B. READ COMMITTED, REPEATABLE READ, 
+                                SERIALIZABLE). Mit jedem höheren Level steigt die Datenkonsistenz, 
+                                aber potenziell auch die Wahrscheinlichkeit für Sperrkonflikte oder 
+                                transaktionsbedingte Wartezeiten.
+                            </p>
+                        
+                            <h2>6. NoSQL als Alternative?</h2>
+                            <p>
+                                Während relationale Datenbanken das Rückgrat vieler Anwendungen bilden, gibt es 
+                                zunehmend auch <strong>NoSQL-Datenbanken</strong>, die etwa als Schlüssel-Wert-Store, 
+                                Dokumenten-Datenbank oder Graph-Datenbank auftreten. Beispiele sind 
+                                <strong>Redis</strong>, <strong>MongoDB</strong> oder <strong>Neo4j</strong>. 
+                                Diese Systeme wurden konzipiert, um bestimmte Anforderungen wie 
+                                horizontale Skalierbarkeit und flexible Datenschemata zu bedienen.
+                            </p>
+                            <p>
+                                NoSQL bedeutet nicht, dass <em>keine</em> Struktur existiert, sondern eher, 
+                                dass das Datenmodell <em>schemalos</em> oder <em>flexibel</em> ist und 
+                                häufig auf die komplexe ACID-Transaktionslogik verzichtet wird, um 
+                                <strong>Performance</strong> oder <strong>Verfügbarkeit</strong> zu verbessern.
+                                Solche Datenbanken sind ideal für Szenarien, in denen sich das Schema 
+                                häufig ändert oder riesige Datenmengen verteilt gespeichert werden müssen.
+                            </p>
+                        
+                            <h2>7. Fazit</h2>
+                            <p>
+                                Die Wahl der richtigen Datenbankarchitektur und deren strukturelle Ausgestaltung 
+                                sind kritische Faktoren für die Zuverlässigkeit und Performance einer Anwendung. 
+                                Relationale Datenbanken mit sauber normalisierten Tabellen und fundierten 
+                                Indexstrategien eignen sich für viele klassische Geschäftsprozesse und bieten 
+                                ein hohes Maß an Datenintegrität. 
+                            </p>
+                            <p>
+                                Wer speziellere Anforderungen an Skalierbarkeit oder Flexibilität hat, 
+                                kann <strong>NoSQL-Lösungen</strong> in Betracht ziehen. Auch dort gilt es, 
+                                Grundprinzipien wie saubere Datendefinition und sinnvolle Abfragekonzepte 
+                                zu beachten – nur dann entfaltet diese Technologie ihren vollen Nutzen.
+                            </p>
+                            <p>
+                                Zusammenfassend lässt sich sagen: <em>Normalisierung</em> ist kein Selbstzweck, 
+                                sondern ein zentrales Werkzeug, um Daten aufgeräumt und konsistent zu halten. 
+                                Sie bildet die Basis für robustes Anwendungsdesign in relationalen Datenbanken. 
+                                In Kombination mit indexbasierten Performance-Tweaks und einer durchdachten 
+                                Transaktionskontrolle entsteht so ein solides Fundament, auf dem moderne 
+                                Applikationen sicher aufbauen können.
+                            </p></div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+						
+							
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

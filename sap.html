@@ -1,0 +1,230 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>SAP-Schnittstellen</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Johns Journal</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="passwords.html">Zugangsdaten</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>SAP-Schnittstellen – Ein umfassender Überblick</h1>
+							<span class="image main"><img src="images/sap.png" alt="" /></span>
+							<p>
+                                SAP-Systeme bilden in vielen Großunternehmen das Rückgrat sämtlicher Geschäftsprozesse:
+                                von der Buchhaltung und Materialwirtschaft über das Personalwesen bis hin zu Vertrieb
+                                und Kundenmanagement. Da in diesen Systemen enorme Mengen an unternehmenskritischen 
+                                Daten liegen, ist eine reibungslose und zugleich sicherheitsbewusste Kommunikation
+                                zwischen SAP und anderen Anwendungen unverzichtbar. Verschiedene Schnittstellen sorgen
+                                dafür, dass externe Systeme – ob hausintern oder extern – auf Daten und Funktionen
+                                der SAP-Umgebung zugreifen können.
+                            </p>
+                        
+                            <h2>1. Warum Schnittstellen so wichtig sind</h2>
+                            <p>
+                                Unternehmen operieren selten in einer abgeschotteten IT-Landschaft. 
+                                Im Gegenteil: Es gilt, Daten aus unterschiedlichsten Quellen miteinander zu verknüpfen 
+                                und zu verarbeiten. Ein Onlineshop will die Bestelldaten ins SAP-System einspielen, 
+                                Maschinen senden Sensordaten in Echtzeit an das Lagerverwaltungssystem, und 
+                                externe Dienstleister benötigen Informationen über Personal- oder Finanzprozesse.
+                            </p>
+                            <p>
+                                Ohne eine durchdachte Schnittstellenstrategie führt das oft zu Datensilos, 
+                                Redundanzen oder Fehlern bei der Datenverarbeitung. Daher stellt SAP verschiedene 
+                                Technologien bereit, um einen konsistenten Datenfluss zu ermöglichen – ganz gleich, 
+                                ob es um das Abfragen von Beständen, das Anlegen von Kundenstammdaten oder das
+                                Ausführen komplexer Transaktionen geht.
+                            </p>
+                        
+                            <h2>2. Die wichtigsten SAP-Schnittstellen</h2>
+                        
+                            <h3>2.1 Remote Function Call (RFC)</h3>
+                            <p>
+                                Eine der ältesten und bekanntesten Methoden, um mit SAP-Systemen zu kommunizieren,
+                                ist der RFC (Remote Function Call). Dabei handelt es sich um ein eigenes Protokoll, 
+                                das Funktionsbausteine (Funktionsmodule) in SAP aufruft. Entwickelt wird meist 
+                                in ABAP, wobei die entsprechenden Bausteine später von externen Programmen 
+                                (oder anderen SAP-Systemen) angesprochen werden können.
+                            </p>
+                            <p>
+                                <strong>Vorteil:</strong> RFC ist sehr tief in der SAP-Architektur verankert und 
+                                eignet sich gut, um einzelne Funktionen oder Transaktionen aus der Ferne anzustoßen.
+                                <br>
+                                <strong>Nachteil:</strong> Da RFC oft auf proprietäre SAP-Bibliotheken setzt,
+                                müssen externe Anwendungen spezielle SAP-Libraries einbinden. Außerdem erfordert 
+                                die richtige Konfiguration Kenntnisse über SAP-spezifische Sicherheits- und 
+                                Berechtigungsobjekte.
+                            </p>
+                        
+                            <h3>2.2 OData-Services</h3>
+                            <p>
+                                OData (Open Data Protocol) ist ein webbasiertes Protokoll, das auf REST-Architekturprinzipien 
+                                fußt. SAP hat OData-Services integriert, damit Datenbereitstellung und -abfrage 
+                                über standardisierte HTTP-Aufrufe erfolgen können. 
+                            </p>
+                            <p>
+                                <strong>Vorteil:</strong> RESTful-APIs sind weit verbreitet und erleichtern 
+                                die Integration in moderne Web- oder Mobile-Anwendungen. JSON oder XML können
+                                als Datenformate genutzt werden.
+                                <br>
+                                <strong>Nachteil:</strong> Man muss bei der Erstellung von OData-Services 
+                                im Gateway oder in der entsprechenden SAP-Komponente sorgfältig auf 
+                                Berechtigungskonzepte und Performance achten – sonst entsteht 
+                                schnell eine neue Angriffsfläche.
+                            </p>
+                        
+                            <h3>2.3 SOAP-Schnittstellen</h3>
+                            <p>
+                                In vielen (älteren) Unternehmenslandschaften spielt SOAP (Simple Object Access Protocol) 
+                                eine wichtige Rolle. SAP liefert standardmäßig Webservice-Funktionen, die 
+                                auf SOAP basieren und über WSDL-Dateien (Web Services Description Language) 
+                                definiert sind.
+                            </p>
+                            <p>
+                                <strong>Vorteil:</strong> SOAP ist ein standardisiertes Protokoll und war
+                                lange Zeit das bevorzugte Werkzeug für serviceorientierte Architekturen (SOA).
+                                <br>
+                                <strong>Nachteil:</strong> SOAP wirkt heute oft schwerfällig gegenüber
+                                schlankeren RESTful-Ansätzen. Dennoch bleibt es ein wichtiger Baustein, 
+                                gerade in komplexen, gewachsenen SAP-Landschaften.
+                            </p>
+                        
+                            <h3>2.4 BAPI und IDoc</h3>
+                            <p>
+                                <strong>BAPIs (Business Application Programming Interfaces)</strong> sind 
+                                spezielle Programmierschnittstellen in SAP, mit denen standardisierte Zugriffe 
+                                auf Geschäftsobjekte möglich sind (z. B. Kunden, Aufträge, Materialien). 
+                                <strong>IDocs (Intermediate Documents)</strong> hingegen werden häufig 
+                                für den asynchronen Datenaustausch genutzt und erlauben, große Datenmengen 
+                                strukturiert zwischen Systemen zu transportieren.
+                            </p>
+                            <p>
+                                Wer BAPIs und IDocs korrekt nutzt, kann SAP-Daten automatisiert an externe Systeme 
+                                weitergeben oder umgekehrt empfangen, etwa Bestellungen aus einem Webshop 
+                                oder Lieferdaten von Logistikpartnern.
+                            </p>
+                        
+                            <h2>3. Sicherheit und Berechtigungen</h2>
+                            <p>
+                                Da über SAP-Schnittstellen mit sensiblen Daten wie Kundendaten, Finanzzahlen 
+                                oder Personalinformationen hantiert wird, ist Sicherheit hier ein zentrales Thema. 
+                                <strong>Authentifizierung</strong> und <strong>Autorisierung</strong> müssen 
+                                wasserdicht gestaltet sein, damit kein Unbefugter Daten abgreifen oder 
+                                kritische Vorgänge ausführen kann.
+                            </p>
+                            <p>
+                                <strong>SAP-Berechtigungsobjekte</strong> spielen eine Schlüsselrolle: 
+                                Jede Funktion, ob RFC-Baustein oder OData-Service, sollte nur von Nutzern 
+                                mit den entsprechenden Rollen und Profilen aufgerufen werden dürfen. 
+                                Zusätzlich sorgen Verschlüsselung (z. B. HTTPS oder SNC bei RFC) und 
+                                solide Netzwerk-Segmentierung für zusätzliche Sicherheit.
+                            </p>
+                        
+                            <h2>4. Typische Schwachstellen und Risiken</h2>
+                            <ul>
+                                <li>
+                                    <strong>Fehlkonfigurierte RFC-User</strong>: 
+                                    Ein Service-User mit zu weitreichenden Rechten kann einem Angreifer 
+                                    Türen zu kritischen SAP-Transaktionen öffnen.
+                                </li>
+                                <li>
+                                    <strong>Offene OData-Endpoints</strong>: 
+                                    Werden OData-Services zu großzügig konfiguriert, lassen sie Datenlecks
+                                    zu oder ermöglichen ungewollte Schreibzugriffe auf kritische Tabellen.
+                                </li>
+                                <li>
+                                    <strong>Unverschlüsselte Kommunikation</strong>: 
+                                    Alte Verbindungen ohne TLS oder SNC können den Datenverkehr zwischen 
+                                    SAP und dem externen System für Angreifer abhörbar machen.
+                                </li>
+                                <li>
+                                    <strong>Fehlerhafte Rechtemodelle</strong>: 
+                                    Rollen und Berechtigungen, die für Tests großzügig angelegt wurden, 
+                                    aber nicht wieder eingeschränkt wurden, führen zu unangemessenen Zugriffsrechten.
+                                </li>
+                            </ul>
+                        
+                            <h2>5. Best Practices und Fazit</h2>
+                            <p>
+                                Wer eine SAP-Landschaft betreibt, sollte ganzheitlich denken: 
+                                ein <strong>geregeltes Identitäts- und Berechtigungsmanagement</strong>, 
+                                die konsequente Nutzung von <strong>verschlüsselten Verbindungen</strong> 
+                                (HTTPS, SNC), sowie regelmäßige <strong>Sicherheitsaudits</strong> gehören 
+                                zum Pflichtprogramm. Dafür bietet SAP selbst viele Tools und Anwendungen 
+                                (z. B. das Security Audit Log), aber auch externe Scanner können helfen, 
+                                Schwachstellen frühzeitig aufzudecken.
+                            </p>
+                            <p>
+                                SAP-Schnittstellen sind das Bindeglied zwischen den zentralen Unternehmensdaten
+                                und der Außenwelt. Daher sollte jede Integration – ob via RFC, OData, SOAP, 
+                                BAPI oder IDoc – genau geplant und abgesichert werden. Wer die technischen 
+                                Möglichkeiten gekonnt nutzt, erschließt sich eine enorme Automations- und 
+                                Skalierungskraft. Wer allerdings fahrlässig handelt oder Konfigurationsfehler 
+                                übersieht, riskiert empfindliche Datenlecks und massive Schäden am Kerngeschäft. 
+                                Mit dem richtigen Know-how und Sorgfalt lassen sich jedoch leistungsfähige 
+                                und sichere Integrationen schaffen, die den Erfolg eines Unternehmens 
+                                langfristig stützen.
+                            </p></div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+						
+							
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

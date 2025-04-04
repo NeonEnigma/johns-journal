@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Linux</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Johns Journal</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="passwords.html">Zugangsdaten</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Effiziente Navigation in der Linux-Konsole</h1>
+
+
+							<span class="image main"><img src="images/linux.png" alt="" /></span>
+							
+                            <p>
+                                Linux ist für mich wie ein riesiger Werkzeugkasten, gefüllt mit mächtigen Befehlen, die nur darauf warten, geschickt eingesetzt zu werden.
+                                Hinter jeder schlichten Zeile in der Kommandozeile verbirgt sich Potenzial, das man sich mit ein wenig Übung zunutze machen kann.
+                                Wenn man zusätzlich noch SSH beherrscht, hat man quasi den Generalschlüssel zu jeder entfernten Maschine, auf der man ein Benutzerkonto besitzt.
+                                Perfekt für den Fall, wenn man im richtigen Moment von überall aus zugreifen möchte.
+                            </p>
+                        
+                            <h2>1. Warum Linux-Befehle so entscheidend sind</h2>
+                            <p>
+                                In der Windows-Welt mag vieles über Benutzeroberflächen laufen. 
+                                In Linux jedoch werden handfeste Aufgaben – wie Dateien verwalten, Verzeichnisse wechseln 
+                                oder wichtige Systeminformationen auslesen – oft per Terminal erledigt. 
+                                Ein paar Klassiker:
+                            </p>
+                            <ul>
+                                <li>
+                                    <code>ls</code>: Zeigt den Inhalt eines Verzeichnisses an.
+                                    Mit Parametern wie <code>-a</code> (alle Dateien, auch versteckte) sieht man noch mehr Details.
+                                </li>
+                                <li>
+                                    <code>cd &lt;pfad&gt;</code>: Wechselt ins gewünschte Verzeichnis (z. B. <code>cd /</code>, <code>cd ..</code>, <code>cd ./ordner</code>).
+                                </li>
+                                <li>
+                                    <code>cat &lt;datei&gt;</code>: Zeigt den Inhalt einer Datei an (praktisch zum schnellen Prüfen von Configs oder Passwörtern).
+                                </li>
+                                <li>
+                                    <code>pwd</code>: Zeigt den aktuellen Pfad an, in dem du dich befindest.
+                                </li>
+                                <li>
+                                    <code>clear</code>: Leert das Terminal und räumt den Bildschirm auf.
+                                </li>
+                                <li>
+                                    <code>help</code>: Zeigt eine Übersicht verfügbarer Befehle oder gibt Hilfetexte zu bestimmten Befehlen aus.
+                                </li>
+                            </ul>
+                            <p>
+                                Gerade bei heiklen Operationen gilt: Doppelt prüfen, bevor man einen Befehl abfeuert. 
+                                „root“ zu sein heißt, jedes Kommando kann das System nachhaltig verändern. 
+                                Was in einer Kommandoshell an Rechten existiert, kann ähnlich gefährlich sein wie ein unbewachter Tresor.
+                            </p>
+                        
+                            <h2>2. SSH – Die geheime Hintertür (legal oder nicht)</h2>
+                            <p>
+                                SSH steht für „Secure Shell“ und ist de facto der Standard, um sich sicher auf entfernten Rechnern anzumelden. 
+                                Ohne SSH müssten wir riskante Klartext-Verbindungen (Telnet, rsh etc.) nutzen, was viel zu leicht abgefangen werden kann. 
+                                Mit SSH wird jede Sitzung verschlüsselt, wodurch Passwörter und Daten für Außenstehende verborgen bleiben.
+                            </p>
+                            <ul>
+                                <li>
+                                    <strong>Verbindungsaufbau</strong>: Typischerweise: <code>ssh benutzername@serveradresse</code>. 
+                                    Danach kommt die Passwortabfrage oder – noch besser – die Nutzung eines SSH-Keys.
+                                </li>
+                                <li>
+                                    <strong>Key-basierte Authentifizierung</strong>: 
+                                    Ein SSH-Key besteht aus einem <em>privaten</em> und einem <em>öffentlichen</em> Schlüssel. 
+                                    Den öffentlichen Schlüssel lädt man auf den Zielserver hoch (in <code>~/.ssh/authorized_keys</code>), 
+                                    den privaten Schlüssel behält man unter Verschluss. Mit <code>ssh-keygen</code> kann man solche Schlüssel erzeugen.
+                                </li>
+                                <li>
+                                    <strong>Portweiterleitungen &amp; Tunneling</strong>: 
+                                    SSH kann mehr als nur eine Remote-Shell öffnen. Man kann z. B. Ports vom lokalen Rechner zum entfernten Server 
+                                    tunneln (und umgekehrt). Das läuft oft über den Parameter <code>-L</code> oder <code>-R</code>, je nach Richtung.
+                                </li>
+                                <li>
+                                    <strong>Config-Datei nutzen</strong>: 
+                                    In <code>~/.ssh/config</code> lassen sich Verbindungsdetails hinterlegen, so dass man nicht jedes Mal Serveradresse, 
+                                    Port und Benutzer eingeben muss.
+                                </li>
+                            </ul>
+                        
+                            <h2>3. Worauf man achten sollte</h2>
+                            <p>
+                                <strong>Sichere Schlüsselverwaltung:</strong> Wer seinen privaten SSH-Key verliert oder unverschlüsselt teilt, hat ein Problem.<br>
+                                <strong>Rechte &amp; Eigentümer:</strong> Auf Linux-Systemen kann man sich schnell zum Admin (root) hochschaukeln, wenn Dateien falsch berechtigt sind.<br>
+                                <strong>Protokollierung:</strong> Viele Systeme loggen jede SSH-Sitzung (z. B. in <code>/var/log/auth.log</code>).<br>
+                                <strong>Firewall-Konfiguration:</strong> Ist Port 22 (Standard für SSH) offen oder nutzt man einen anderen Port?
+                            </p>
+                        
+                            <h2>4. Fazit</h2>
+                            <p>
+                                Ohne Linux-Basiswissen und SSH-Kenntnisse ist man im Serverumfeld wie ein Taucher ohne Sauerstoff – man kommt nicht weit. 
+                                Wer aber routiniert damit umgeht, sichert sich einen bequemen Zugang zu entfernten Systemen, kann Daten blitzschnell verarbeiten 
+                                und hat die volle Kontrolle über das Geschehen. In einer digitalen Welt, in der Geschwindigkeit und Flexibilität zählen, 
+                                ist SSH der Türöffner, der dich von überall her an deine Systeme lässt. Und wer einmal gelernt hat, die geballte Macht 
+                                der Linux-Befehle zu nutzen, empfindet jede andere Umgebung plötzlich als beunruhigend begrenzt.
+                            </p>
+                            <p>
+                                Nutze das Terminal klug – und vor allem verantwortungsvoll. Denn jede kleine Zeile kann dein mächtigster Verbündeter 
+                                oder dein schlimmster Albtraum sein.
+                            </p>
+                        </div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+						
+							
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

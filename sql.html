@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>SQL-Injection</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Johns Journal</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="passwords.html">Zugangsdaten</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>SQL-Injection – Ein Einblick in unsichere Formulare</h1>
+							<span class="image main"><img src="images/sql.png" alt="" /></span>
+                            <p>
+                                SQL-Injection zählt zu den bekanntesten und gefährlichsten Sicherheitslücken im Bereich 
+                                der Webentwicklung. Der Kern des Problems liegt darin, dass Eingaben, die ein Benutzer 
+                                in ein Online-Formular einträgt, ungefiltert oder nicht ausreichend geprüft in ein 
+                                SQL-Statement übernommen werden. Auf diese Weise kann ein Angreifer Schadbefehle 
+                                direkt an die Datenbank schicken – und damit potenziell auf sämtliche Daten zugreifen 
+                                oder sie sogar manipulieren.
+                            </p>
+                        
+                            <h2>1. Grundlagen und Funktionsweise</h2>
+                            <p>
+                                Das Prinzip einer SQL-Injection ist verblüffend einfach: 
+                                Statt eines erwarteten Wertes – etwa eines Benutzernamens oder einer Artikelnummer – 
+                                übergibt der Angreifer Teile eines eigenen SQL-Befehls. Fügt das Backend diese Zeichenkette 
+                                blindlings an die bestehende Abfrage an, so entsteht ein gültiges, aber bösartiges 
+                                SQL-Kommando. 
+                            </p>
+                            <p>
+                                Beispiel eines harmlosen Statements:
+                            </p>
+                            <pre><code>SELECT * FROM benutzer WHERE name = '[BenutzerEingabe]'</code></pre>
+                            <p>
+                                Gibt der Anwender einen normalen Namen ein, wird lediglich in der Tabelle 
+                                <code>benutzer</code> gefiltert. Nutzt er jedoch eine absichtlich manipulierte 
+                                Zeichenkette, könnte der Befehl wie folgt aussehen:
+                            </p>
+                            <pre><code>SELECT * FROM benutzer WHERE name = 'admin' OR '1' = '1'</code></pre>
+                            <p>
+                                Mit dieser Konstruktion ( <code>' OR '1' = '1'</code> ) liefert die Datenbank 
+                                unter Umständen alle Datensätze zurück – selbst solche, auf die der Nutzer 
+                                gar keinen Zugriff haben sollte.
+                            </p>
+                        
+                            <h2>2. Auswirkung: Von Datendiebstahl bis Systemkontrolle</h2>
+                            <p>
+                                In der harmlosesten Variante kann ein Angreifer „nur“ Daten auslesen, 
+                                die eigentlich gar nicht für ihn gedacht sind. Das kann bereits sehr kritisch sein, 
+                                wenn es sich um Kundendaten, Passwörter oder interne Informationen handelt. 
+                                In schlimmeren Fällen lassen sich per SQL-Injection ganze Tabellen überschreiben 
+                                oder löschen.
+                            </p>
+                            <p>
+                                Mitunter erlaubt die Datenbank sogar die Ausführung weiterer Systemkommandos, 
+                                je nachdem, welche Rechte das Datenbankkonto besitzt. Dann kann 
+                                SQL-Injection sogar den Fuß in die Tür zum gesamten Server bedeuten. 
+                                Es ist also kein reines „Formularproblem“, sondern eine mögliche Vollkatastrophe 
+                                für das gesamte System.
+                            </p>
+                        
+                            <h2>3. Häufige Angriffsszenarien</h2>
+                            <ul>
+                                <li>
+                                    <strong>Login-Bypass</strong>: 
+                                    Man gibt bei einem Login-Formular bewusst manipulierte Zeichenketten ein, 
+                                    um die Passwortprüfung zu umgehen (z. B. <code>' OR '1'='1</code>).
+                                </li>
+                                <li>
+                                    <strong>Enumerierung von Daten</strong>: 
+                                    Angreifer nutzen schrittweise verschiedene Injektionen, um Informationen über Tabellennamen, 
+                                    Spalten oder sogar Datenbank-Versionen zu erhalten.
+                                </li>
+                                <li>
+                                    <strong>Blind SQL-Injection</strong>: 
+                                    Hier bekommt der Angreifer keinerlei direkte Fehlermeldungen. Er testet indirekte 
+                                    Reaktionen des Systems (z. B. unterschiedliche Antwortzeiten, unterschiedliche 
+                                    Rückgabewerte), um Rückschlüsse auf die Datenbank zu ziehen.
+                                </li>
+                                <li>
+                                    <strong>Erweiterte Serverkontrolle</strong>: 
+                                    Bei unsicheren Datenbank-Konfigurationen kann der Angreifer sogar Systembefehle ausführen 
+                                    oder Dateien schreiben und lesen – zum Beispiel, um sich eine Hintertür in das System 
+                                    zu verschaffen.
+                                </li>
+                            </ul>
+                        
+                            <h2>4. Schutzmaßnahmen</h2>
+                            <p>
+                                Damit SQL-Injection gar nicht erst möglich ist, sollte man sich rigoros an die 
+                                Best Practices halten:
+                            </p>
+                            <ul>
+                                <li>
+                                    <strong>Prepared Statements</strong>: 
+                                    Anstatt Strings direkt in SQL-Befehle zu kleben, nutzt man Platzhalter. 
+                                    So wird der Eingabewert getrennt vom eigentlichen Befehl verarbeitet.
+                                </li>
+                                <li>
+                                    <strong>Input Validierung</strong>: 
+                                    Vor jeder Datenbankabfrage sollten alle Parameter auf Plausibilität und 
+                                    zugelassene Zeichen geprüft werden.
+                                </li>
+                                <li>
+                                    <strong>Least Privilege</strong>: 
+                                    Der Datenbank-Nutzer, der Webanfragen abarbeitet, sollte nur so viele Rechte 
+                                    haben, wie unbedingt nötig sind.
+                                </li>
+                                <li>
+                                    <strong>Whitelisting statt Blacklisting</strong>: 
+                                    Nur Zeichen zulassen, die wirklich gebraucht werden (z. B. bei Zahlenfeldern 
+                                    nur Ziffern).
+                                </li>
+                            </ul>
+                        
+                            <h2>5. Fazit</h2>
+                            <p>
+                                SQL-Injection ist eines der eindrücklichsten Beispiele dafür, wie fatal falsche 
+                                Annahmen über Benutzereingaben sein können. Da selbst vermeintlich kleine Eingabefelder 
+                                das Tor zu gesamten Datenbanken öffnen können, ist es unerlässlich, die 
+                                grundlegenden Sicherheitsmechanismen umzusetzen. Prepared Statements, konsequente 
+                                Rechtevergabe und eine vernünftige Filterung von Eingaben sollten für jede 
+                                Webanwendung selbstverständlich sein.
+                            </p>
+                            <p>
+                                Wer jedoch eine Sicherheitslücke findet und sie ausnutzt, kann in kurzer Zeit 
+                                riesige Datenbestände ansehen oder schädigen. In Zeiten, in denen Daten zum 
+                                wertvollsten Gut eines Unternehmens gehören, ist das mehr als nur ein Kavaliersdelikt. 
+                                Umso wichtiger ist es, dass Entwickler, Tester und Administratoren gemeinsam 
+                                ein Bewusstsein für diese Gefahr haben und ihre Anwendungen entsprechend absichern.
+                            </p>
+                        </div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+						
+							
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

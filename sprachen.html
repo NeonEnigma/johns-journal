@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Kompilierte vs. Interpretierte Sprachen – Grundlagen und Unterschiede</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Johns Journal</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="passwords.html">Zugangsdaten</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+                            <h1>Kompilierte vs. Interpretierte Sprachen – Grundlagen und Unterschiede</h1>
+							<span class="image main"><img src="images/sprachen.png" alt="" /></span>
+							<p>
+                                In der Softwareentwicklung unterscheidet man häufig zwischen <strong>kompilierten</strong> und 
+                                <strong>interpretieren</strong> Programmiersprachen. Dieser Unterschied wirkt sich spürbar 
+                                auf den Entwicklungsprozess, die Ausführungsleistung und die Flexibilität von Anwendungen aus. 
+                                Obwohl die Grenzen zwischen beiden Ansätzen mittlerweile zunehmend verschwimmen, lohnt es sich, 
+                                die klassischen Prinzipien und Merkmale genauer unter die Lupe zu nehmen, um zu verstehen, 
+                                wie Code „vom Menschen zur Maschine“ gelangt.
+                            </p>
+                        
+                            <h2>1. Was bedeutet „kompiliert“?</h2>
+                            <p>
+                                Spricht man von einer <strong>kompilierten Sprache</strong>, dann meint man in der Regel, 
+                                dass der Quellcode zunächst durch einen <em>Compiler</em> in eine direkt ausführbare Form 
+                                übersetzt wird. Dabei kann es sich um reinen Maschinencode handeln, den der Prozessor 
+                                ohne weitere Zwischenschicht ausführen kann, oder um sogenannte Bytecode-Formate, 
+                                die von einer Laufzeitumgebung interpretiert werden (z. B. bei Java oder C#). 
+                                Im engeren Sinne gilt aber vor allem die Übersetzung in Maschinencode (z. B. bei C oder C++) 
+                                als das klassische Kompilieren.
+                            </p>
+                            <p>
+                                Die <strong>Kompilierung</strong> läuft oft in mehreren Schritten ab:
+                            </p>
+                            <ul>
+                                <li>
+                                    <strong>Lexikalische Analyse</strong> (Tokenizing): Der Code wird in kleinere 
+                                    Einheiten („Tokens“) zerlegt, etwa Schlüsselwörter, Symbole und Identifier.
+                                </li>
+                                <li>
+                                    <strong>Syntaktische Analyse</strong> (Parsing): Aus den Tokens wird eine 
+                                    Struktur (z. B. ein abstrakter Syntaxbaum) erstellt, die den Programmaufbau abbildet.
+                                </li>
+                                <li>
+                                    <strong>Semantische Analyse</strong>: Der Compiler prüft, ob die Anweisungen inhaltlich 
+                                    (semantisch) korrekt sind, also ob z. B. die verwendeten Datentypen stimmen oder Funktionen 
+                                    tatsächlich existieren.
+                                </li>
+                                <li>
+                                    <strong>Optimierung</strong>: Während dieser Phase kann der Compiler den Code 
+                                    hinsichtlich Geschwindigkeit und Speicherverbrauch verbessern, etwa durch 
+                                    Entfernen redundanter Teile oder Inlining von Funktionen.
+                                </li>
+                                <li>
+                                    <strong>Code-Generierung</strong>: Schließlich wird aus dem optimierten Zwischencode 
+                                    (Intermediate Representation) eigentlicher Maschinencode erzeugt, den die CPU direkt 
+                                    ausführen kann.
+                                </li>
+                            </ul>
+                            <p>
+                                Das Ergebnis ist häufig eine <em>executable</em> (z. B. eine „.exe“-Datei unter Windows) 
+                                oder ein direkt ausführbares Binary unter Linux. Damit ist es möglich, das Programm 
+                                unabhängig vom ursprünglichen Quellcode zu starten – ein Vorteil, der insbesondere 
+                                im kommerziellen Bereich geschätzt wird.
+                            </p>
+                        
+                            <h2>2. Vorteile kompilierten Codes</h2>
+                            <ul>
+                                <li>
+                                    <strong>Hohe Ausführungsgeschwindigkeit</strong>: Da die CPU den Code direkt 
+                                    ausführen kann, entfallen zur Laufzeit viele Interpretationsschritte. 
+                                    Das führt in der Regel zu einer guten Performance.
+                                </li>
+                                <li>
+                                    <strong>Schneller Programmstart</strong>: Ein kompiliertes Programm braucht 
+                                    (nach dem Laden ins Arbeitsspeicher) keine aufwändige Übersetzungsphase, 
+                                    bevor es loslegt.
+                                </li>
+                                <li>
+                                    <strong>Schutz des Quellcodes</strong>: In der Praxis ist es schwieriger, 
+                                    aus einem reinen Maschinencode den ursprünglichen Programmcode 
+                                    1:1 zu rekonstruieren (obwohl Reverse Engineering natürlich möglich bleibt).
+                                </li>
+                                <li>
+                                    <strong>Optimierungsspielraum</strong>: Moderne Compiler sind sehr leistungsfähig 
+                                    im Erkennen von Optimierungspotenzial, was zu sehr effizienten Binärdateien führen kann.
+                                </li>
+                            </ul>
+                        
+                            <h2>3. Was bedeutet „interpretiert“?</h2>
+                            <p>
+                                Bei <strong>interpretieren Sprachen</strong> wird der Quellcode zur Laufzeit 
+                                „Zeile für Zeile“ oder „Block für Block“ von einem <em>Interpreter</em> eingelesen 
+                                und ausgeführt. Typische Beispiele dafür sind <strong>Python</strong>, 
+                                <strong>Ruby</strong> oder <strong>JavaScript</strong> (wenn man es im Browser ausführt).
+                            </p>
+                            <p>
+                                Anstatt alle Codezeilen im Voraus zu übersetzen, arbeitet der Interpreter quasi 
+                                <em>on the fly</em>: Er liest eine Anweisung, überprüft deren Syntax und Bedeutung 
+                                und führt sie dann aus. Damit entfällt ein separater Kompilierungsschritt, 
+                                was beim Entwickeln sehr praktisch sein kann, da man Änderungen sofort 
+                                im laufenden Code testen kann. 
+                            </p>
+                            <p>
+                                Die <strong>Java Virtual Machine (JVM)</strong> oder das <strong>.NET Framework</strong> 
+                                liegen in einer Grauzone: Hier wird der Code zuerst in Bytecode kompiliert 
+                                und dann zur Laufzeit (teils mittels <em>JIT-Compiler</em>) ausgeführt. 
+                                Man spricht in solchen Fällen oft von „hybriden“ Modellen, da sie 
+                                Elemente beider Welten vereinen.
+                            </p>
+                        
+                            <h2>4. Vorteile interpretierter Sprachen</h2>
+                            <ul>
+                                <li>
+                                    <strong>Schnellere Entwicklungszyklen</strong>: 
+                                    Man speichert die Datei, führt sie aus, und sieht das Ergebnis sofort – 
+                                    ohne explizite Kompilierung.
+                                </li>
+                                <li>
+                                    <strong>Portabilität</strong>: Oft reicht es, dass auf dem Zielsystem 
+                                    ein Interpreter (oder eine Laufzeitumgebung) vorhanden ist, um das Programm 
+                                    in unveränderter Form zu starten.
+                                </li>
+                                <li>
+                                    <strong>Flexibilität und Dynamik</strong>: 
+                                    Interpretierte Sprachen ermöglichen einfache Metaprogrammierung, 
+                                    dynamische Typisierung oder spätes Binden von Funktionen. 
+                                    Das macht sie für bestimmte Anwendungsfälle, etwa in der 
+                                    Webentwicklung oder beim Skripten, sehr beliebt.
+                                </li>
+                                <li>
+                                    <strong>Fehlerbehandlung zur Laufzeit</strong>: 
+                                    Da der Code erst während der Ausführung interpretiert wird, kann das System 
+                                    auf bestimmte Fehler dynamisch reagieren – z. B. neue Funktionen nachladen.
+                                </li>
+                            </ul>
+                        
+                            <h2>5. JIT-Compilation – die Zwischenwelt</h2>
+                            <p>
+                                In vielen modernen Laufzeitumgebungen setzt sich zunehmend das Konzept der 
+                                <strong>Just-in-Time-Kompilierung (JIT)</strong> durch. Dabei wird der Code, 
+                                der eigentlich interpretiert werden sollte (z. B. Bytecode), ganz oder teilweise 
+                                in Maschinencode übersetzt, <em>während</em> das Programm läuft. 
+                                Häufige oder besonders zeitkritische Codestellen profitieren dann 
+                                von nahezu compilerähnlicher Geschwindigkeit.
+                            </p>
+                            <p>
+                                Ein Beispiel dafür ist <strong>HotSpot</strong>, die Standard-JVM von Oracle: 
+                                Hier werden Methoden, die sehr häufig aufgerufen werden, aufwändig optimiert 
+                                und in Maschinencode kompiliert. Im Ergebnis kann Java-Code dadurch 
+                                in bestimmten Szenarien ähnlich schnell wie kompiliertes C++ laufen. 
+                                Auch JavaScript-Engines wie <strong>V8</strong> (Chrome) nutzen JIT-Techniken, 
+                                um die Ausführung signifikant zu beschleunigen.
+                            </p>
+                        
+                            <h2>6. Typische Einsatzgebiete</h2>
+                            <p>
+                                Welche Art von Sprache man wählt, hängt stark von den Zielen und Anforderungen ab:
+                            </p>
+                            <ul>
+                                <li>
+                                    <strong>Systemnahe Entwicklung und High-Performance</strong>: 
+                                    Wenn eine Anwendung sehr performant sein muss (z. B. bei Echtzeitsystemen, 
+                                    Treibern oder Hochfrequenz-Handelssystemen), sind kompiliert Sprachen wie C, 
+                                    C++ oder Rust meistens erste Wahl.
+                                </li>
+                                <li>
+                                    <strong>Schnelles Prototyping und Scripting</strong>: 
+                                    Für schnelle Experimente, Automatisierungen oder Webanwendungen sind 
+                                    interpretierte Sprachen wie Python, Ruby oder JavaScript beliebte Optionen. 
+                                    Ihre Flexibilität und umfangreichen Bibliotheken unterstützen rasches Vorankommen.
+                                </li>
+                                <li>
+                                    <strong>Plattformunabhängige Apps</strong>: 
+                                    Java und C# (mit .NET) nutzen Bytecode und JIT-Kompilierung. 
+                                    Das erlaubt eine Kombination aus relativ guter Performance und einfacher Portierung 
+                                    auf unterschiedliche Betriebssysteme.
+                                </li>
+                            </ul>
+                        
+                            <h2>7. Fazit</h2>
+                            <p>
+                                Die Entscheidung, ob man eine <strong>kompilierte</strong> oder 
+                                <strong>interpretierte</strong> Sprache einsetzt, wird in der Praxis 
+                                längst nicht mehr so strikt getroffen wie früher. Während kompiliert Sprachen 
+                                durch optimierte Compiler und direkten Maschinencode meist einen 
+                                <em>Leistungsvorteil</em> haben, glänzen interpretierte Sprachen 
+                                durch <em>Entwicklungskomfort</em>, <em>Portabilität</em> und <em>Dynamik</em>. 
+                                Dank Techniken wie <strong>JIT-Compilation</strong> und <strong>Bytecode</strong> 
+                                sind viele Sprachen heute „hybrid“ und versuchen, das Beste aus beiden Welten 
+                                zu vereinen.
+                            </p>
+                            <p>
+                                Für Entwicklerinnen und Entwickler geht es weniger um das „Entweder-oder“, 
+                                sondern darum, das passende Werkzeug für das jeweilige Projektziel zu wählen. 
+                                Wer sich in beiden Welten (kompiliert und interpretiert) auskennt, 
+                                ist klar im Vorteil: Man versteht nicht nur, wie ein Compiler unter der Haube 
+                                seinen Code optimieren kann, sondern auch, welche Vorzüge eine 
+                                Interpretationsumgebung bei schnellen Änderungen und Experimenten bietet. 
+                                Am Ende zählen gut wartbarer Code, zuverlässige Ausführung und ein 
+                                effizientes Zusammenspiel aller Komponenten – egal, ob der Quellcode 
+                                vor der Ausführung in Binärdateien verwandelt wird oder er 
+                                erst zur Laufzeit entschlüsselt wird.
+                            </p></div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+						
+							
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
